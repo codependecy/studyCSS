@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html>
-
 	<head>
 		<title>何灿的个人简历</title>
 		<script src="//at.alicdn.com/t/font_451045_32zbfqegtq3t0529.js"></script>
 		<script src="//cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/js/swiper.min.js"></script>
+
+		<script src="//cdn.jsdelivr.net/npm/leancloud-storage@3.11.0/dist/av-min.js"></script>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/17.1.1/Tween.min.js"></script>
 		<style type="text/css">
 			.loading {
 				width: 200px;
@@ -324,7 +327,6 @@
 
 
 
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/17.1.1/Tween.min.js"></script>
 		<script>
 			// 添加 offset 类
 			let specialTags = document.querySelectorAll('[data-x]')
@@ -409,6 +411,23 @@
 						.start(); // 开始缓动
 				}
 			}
+
+
+			var APP_ID = 'pKkU2717xaiyu8egOaNYucH9-gzGzoHsz';
+			var APP_KEY = 'pL66pN78H8USTLkSfi6S6Izn';
+
+			AV.init({
+				appId: APP_ID,
+				appKey: APP_KEY
+			});
+			console.log(APP_ID)
+			var TestObject = AV.Object.extend('TestObject');
+			var testObject = new TestObject();
+			testObject.save({
+				words: 'Hello World!'
+			}).then(function(object) {
+				alert('LeanCloud Rocks!');
+			})
 		</script>
 	</body>
 
